@@ -6,11 +6,28 @@ public class BallController : MonoBehaviour {
 
     private float speed = 10.0f;
     public GameObject ball;
+	
+
+	public void Throw () {
+		//初速度を持たせる
+		GetComponent<Rigidbody>().AddForce(0, 0, -speed, ForceMode.Impulse);
+    }
+
+    public void RandomThrow () {
+        
+		//ランダムに初速度を与える
+	    private int randomX = Random.Range(-3, 3);
+	    private int randomY = Random.Range(-3, 3);
+	    //public float levelX = 1.0f;
+	    //public float levelY = 1.0f;
+
+        GetComponent<Rigidbody>().AddForce(randomX, randomY, -speed, ForceMode.Impulse);
+    }
 
 	// Use this for initialization
-	void Start () {
-        //初速度を持たせる
-        this.GetComponent<Rigidbody>().AddForce(0, 0, -speed, ForceMode.Impulse);
+	public void Start () {
+		//Throw();
+
 	}
 	
 	// Update is called once per frame
