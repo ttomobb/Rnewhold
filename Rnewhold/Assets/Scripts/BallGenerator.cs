@@ -18,13 +18,17 @@ public class BallGenerator : MonoBehaviour {
 
 	public void PitchButtonDown()
 	{
-		GameObject ball = Instantiate(ballPrefab) as GameObject;
+        GameObject ball = Instantiate(ballPrefab) as GameObject;
 		ball.GetComponent<BallController>().Throw();
+        ball.name = "ball";
 	}
 
 	public void RandomPitchButtonDown()
 	{
 		GameObject ball = Instantiate(ballPrefab) as GameObject;
 		ball.GetComponent<BallController>().RandomThrow();
+        ball.name = "ball";
 	}
+	
+
 }
