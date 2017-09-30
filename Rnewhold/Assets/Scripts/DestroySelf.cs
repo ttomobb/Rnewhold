@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroySelf : MonoBehaviour {
+    float deleteTime = 3.0f;
+    float delta; 
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.z < 0.0)
+        this.delta += Time.deltaTime;
+        if ((transform.position.z < 0.0) || (this.delta > this.deleteTime))
 		{
 			Destroy(gameObject);
 		}

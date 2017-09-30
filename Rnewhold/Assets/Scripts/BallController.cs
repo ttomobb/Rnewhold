@@ -6,29 +6,23 @@ public class BallController : MonoBehaviour {
 
     private float speed = 10.0f;
     public GameObject ball;
-	
 
-	public void Throw () {
-		//初速度を持たせる
-		GetComponent<Rigidbody>().AddForce(0, 0, -speed, ForceMode.Impulse);
+
+    public bool Throw()
+    {
+        //初速度を持たせる
+        GetComponent<Rigidbody>().AddForce(0, 0, -speed, ForceMode.Impulse);
+        //カーソルのトリガーをOnに
+        return true;
     }
 
-    public void RandomThrow () {
-        
-		//ランダムに初速度を与える SetRandomPitchでVictor3型を返す
+    public bool RandomThrow()
+    {
+        //ランダムに初速度を与える SetRandomPitchでVictor3型を返す
         GetComponent<Rigidbody>().AddForce(SetRandomPitch().x, SetRandomPitch().y, -speed, ForceMode.Impulse);
+        //カーソルのトリガーをOnに
+        return true;
     }
-
-
-	// Use this for initialization
-	void Start () {
-        //Throw();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        
-	}
 
     //衝突判定をしてストライクかボールかを判断
     //カーソルに当たった時
@@ -51,11 +45,9 @@ public class BallController : MonoBehaviour {
         }
     }
 
-
-
     //ランダム
-	Vector3 SetRandomPitch()
-	{
+    Vector3 SetRandomPitch()
+    {
         float x = Random.Range(-5.0f, 5.0f);
         float y = Random.Range(-5.0f, 5.0f);
 
@@ -63,8 +55,12 @@ public class BallController : MonoBehaviour {
         float levelX = 0.2f;
         float levelY = 0.2f;
 
-		Vector3 throwDirection = new Vector3(levelX * x, levelY * y, -speed);
+        Vector3 throwDirection = new Vector3(levelX * x, levelY * y, -speed);
         return throwDirection;
-	}
+    }
+
+    void Update () {
+        
+    }
 
 }

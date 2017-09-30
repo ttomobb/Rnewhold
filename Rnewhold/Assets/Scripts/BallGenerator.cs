@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallGenerator : MonoBehaviour {
 
     public GameObject ballPrefab;
-
+    private GameObject ball;
 	// Use this for initialization
 	void Start () {
 		
@@ -18,14 +18,14 @@ public class BallGenerator : MonoBehaviour {
 
 	public void PitchButtonDown()
 	{
-        GameObject ball = Instantiate(ballPrefab) as GameObject;
+        ball = Instantiate(ballPrefab) as GameObject;
 		ball.GetComponent<BallController>().Throw();
         ball.name = "ball";
 	}
 
 	public void RandomPitchButtonDown()
 	{
-		GameObject ball = Instantiate(ballPrefab) as GameObject;
+		ball = Instantiate(ballPrefab) as GameObject;
 		ball.GetComponent<BallController>().RandomThrow();
         ball.name = "ball";
 	}
