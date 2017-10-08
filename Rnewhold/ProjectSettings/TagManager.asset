@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StrikeZone
   - cursor
+  - player
   layers:
   - Default
   - TransparentFX

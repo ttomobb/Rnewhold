@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroySelf : MonoBehaviour {
-    float deleteTime = 3.0f;
+    public float deleteTime = 3.0f;
     float delta; 
 
 	// Update is called once per frame

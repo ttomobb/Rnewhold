@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class CursorController : MonoBehaviour
 {
-
+    //箱作り
     public GameObject ball;
     public GameObject cursor;
+    public GameObject player;
     public GameObject ballPrefab;
+    Animator animator;
     private Vector3 firstPlace;
     private Vector3 relative_distance;
     private float dist_cursor_ball;
@@ -17,7 +19,10 @@ public class CursorController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //オブジェクトらの格納
         this.cursor = GameObject.Find("cursor");
+        this.player = GameObject.Find("Player");
+        animator = this.player.GetComponent<Animator>();
         //カーソルの初期座標を代入
         firstPlace = cursor.transform.position;
 
@@ -38,7 +43,6 @@ public class CursorController : MonoBehaviour
 			if (Input.GetMouseButtonDown(0))
 			{
 				//最初にタッチした位置からの相対距離を算出する
-
 				//Debug.Log("スクリーン座標" + Input.mousePosition);
 				Vector3 screen_point_first = Input.mousePosition;
 				screen_point_first.z = 2.0f;    //適当
@@ -67,6 +71,8 @@ public class CursorController : MonoBehaviour
 	//手を離した時にカーソルを初期値に戻す, バッティングモーションの起動を行う
 		if (Input.GetMouseButtonUp(0))
 		{
+            //BattingOnアニメーションの開始
+            animator.SetTrigger("BattingOn");
 			//ボールを探索、NULLでないときに位置情報を得る
 			if ((this.ball = GameObject.Find("ball")) != null)
 			{
@@ -85,7 +91,6 @@ public class CursorController : MonoBehaviour
 				}
 				*/
 
-				
                 //ボールとカーソルの距離(z座標)を算出
 				dist_cursor_ball = ball.transform.position.z - cursor.transform.position.z;
 				//Debug.Log(ball.transform.position.z);

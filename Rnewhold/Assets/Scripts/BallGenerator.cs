@@ -29,6 +29,13 @@ public class BallGenerator : MonoBehaviour {
 		ball.GetComponent<BallController>().RandomThrow();
         ball.name = "ball";
 	}
+
+    public void PitchDeadballButtonDown()
+    {
+		ball = Instantiate(ballPrefab) as GameObject;
+        ball.GetComponent<BallController>().PitchDeadball();
+		ball.name = "ball";
+    }
 	
 
 }
